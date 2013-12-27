@@ -1,0 +1,42 @@
+#container {
+	border: 1px solid black;
+	background: #FFF5E0;
+	border-radius: 10px;
+}
+
+#title {
+	font-size: 30px;
+	text-align: center;
+	background: #B4463D;
+	color: white;
+	border-radius: 10px;
+}
+
+#countdown {
+	text-align: center;
+	padding-top: 24px;
+	font-size: 24px;
+}
+
+#wordcount {
+	text-align: center;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+#guess {
+	text-align: center;
+	position: relative;
+	font-weight: bold;
+
+}
+
+#letter {
+	text-align: center;
+}
+
+#bottom {
+	padding: 20px;
+	font-size: 24px;
+	font-weight: bold;
+}

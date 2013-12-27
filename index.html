@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hang man!</title>
+	<link rel="stylesheet" href="stylesheet.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+</head>
+<body>
+	<div id="container">
+		<div id="title">Hang Man!</div>
+		<div id="countdown">You have <span id="ticker">#</span> turns left.</div>
+
+		<div id="wordcount">The word is? :</div>
+		<div id="guess">Enter a Letter:<input id="letter" name="Letter" value="" maxlength="1" size="1" /><button id="enter">Guess</button></div>
+		<div id="guess">Solve:<input id="solution" name="solution" value="" maxlength="30" size="30" /><button id="solve">Solve!</button></div>
+		<br>
+		<div id="bottom">Already Guessed: <span id="used"></span></div>
+	
+
+	</div>
+
+
+
+
+
+<script type="text/javascript">
+
+var words = ["JAVASCRIPT", "RUBY", "FISHTANK"];
+var numRand = Math.floor(Math.random() * words.length);
+var theword = words[numRand];
+var letter = "";
+var solution = "";
+var turns = 5;
+
+
+$("#ticker").html(turns);
+
+for (var count = 0; count < theword.length; count++) {
+	$("#wordcount").append(" " + "<span id=" + count + ">_</span> ");
+}
+
+$("#enter").click(function() {
+	letter = $("#letter").val().toUpperCase();
+	console.log (letter);
+
+	if (turns > 0) {
+
+		$("#used").append(letter + " | " );
+
+		if (theword.indexOf(letter) > -1) {
+
+			for (var i = 0; i <= theword.length; i++) {
+					
+				if (theword.charAt(i) == letter) {
+					console.log (theword.charAt(i) + theword.indexOf(letter, [i]));
+					$("#" + i).html(letter);
+					console.log("Found it");
+				} 	
+			}
+		}
+		else {
+			alert ("Nope, try again");
+			turns = turns - 1;
+			$("#ticker").html(turns);
+			return;
+		}
+	}
+
+	else {
+		alert ("No more turns available.");
+		return;
+	}	
+})
+
+$("#solve").click(function() {
+	solution = $("#solution").val().toUpperCase();
+	console.log (letter);
+
+	if (solution == theword) {
+		alert ("You got it!!! Yippee!!");
+	}
+
+	else {
+		alert ("Nope, sorry that is not it.")
+	}
+})
+
+/*
+var inputString = "this is home";
+var findme = "home";
+
+if ( inputString.indexOf(findme) > -1 ) {
+  out.print( "found it" );
+} else {
+  out.print( "not found" );
+}
+
+var testy = "Supercalifragilist";
+
+for (var i = 0; i < testy.length; i++) {
+	console.log (testy[i] + i);
+}
+
+for (var i = 0; i < theword.length; i++) {
+	console.log (theword[i] + i);
+}
+*/
+
+</script>
+
+
+</body>
+</html>
